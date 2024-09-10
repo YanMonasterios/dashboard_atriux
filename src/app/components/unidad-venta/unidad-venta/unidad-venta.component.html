@@ -1,0 +1,68 @@
+<div class="bg-[#e1e1e1] min-h-screen p-10">
+    <div class="flex justify-between items-center mb-4"> <!-- Contenedor para el título y la etiqueta -->
+        <h5 class="text-3xl font-bold p-2">Unidades de Ventas</h5>
+
+        <div class="relative w-full sm:w-[500px]">
+            <input 
+            type="text" 
+            placeholder="Buscar unidad..." 
+            class="border border-gray-300 rounded-md p-2 w-full" 
+            [(ngModel)]="searchTerm" 
+            (input)="filterUnits()" 
+        />
+            <mat-icon class="absolute right-2 top-2">search</mat-icon>
+        </div>
+
+        <p class="text-1xl p-2">Atriux > Menu > Unidades Ventas</p>
+    </div>
+    <div class="bg-white rounded shadow p-10">
+        <div class="mb-4">
+            <div class="mb-4 flex flex-col sm:flex-row justify-between items-center"> <!-- Contenedor principal para los botones -->
+                <button (click)="openDialog({ Code: '', Description: '' , created_at: ''})" class="flex items-center justify-center bg-[#f3f7fe] text-[#29abe2] border-none rounded-[8px] w-full sm:w-[100px] h-[45px] transition-[.3s] hover:bg-[#29abe2] hover:shadow-[0_0_0_5px_#3b83f65f] hover:text-white font-mono mb-2 sm:mb-0">
+                    <mat-icon class="mr-2">add</mat-icon>Agregar 
+                </button>
+            
+                <div class="flex space-x-2"> <!-- Contenedor para los botones de PDF y Excel -->
+                    <button class="flex items-center justify-center bg-[#f3f7fe] text-[#ff95a6] border-none rounded-[8px] w-full sm:w-[100px] h-[45px] transition-[.3s] hover:bg-[#ff95a6] hover:shadow-[0_0_0_5px_#e5194e] hover:text-white font-mono">
+                        <mat-icon class="mr-2">picture_as_pdf</mat-icon> PDF
+                    </button>
+                    <button (click)="exportToExcel()" class="flex items-center justify-center bg-[#f3f7fe] text-[#018a1f] border-none rounded-[8px] w-full sm:w-[100px] h-[45px] transition-[.3s] hover:bg-[#018a1f] hover:shadow-[0_0_0_5px_#00b728] hover:text-white font-mono">
+                        EXCEL
+                    </button>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-6 gap-4 mt-2 text-gray-500"> <!-- Cambia a una columna en pantallas pequeñas -->
+                <div>Codigo</div>
+                <div>Unidad</div>
+                <div>Fecha de Creacion</div>
+                <div>Editar</div>
+            </div>
+        </div>
+        
+        <div class="border-t border-gray-200 pt-4">
+            <div class="grid grid-cols-1 sm:grid-cols-6 gap-4" *ngFor="let unit of filteredUnits">
+                <div class="bluegin">#{{unit.Code}}</div>
+                <div class="flex items-center">
+                    <button [routerLink]="['/pages/unidades-ventas', unit.id]">
+                        {{ unit.Description}}
+                    </button>
+                </div>
+                <div>{{ unit.created_at | formatDate:'yyyy-MM-dd' }}</div>
+                <div class="text-red-500" (click)="openDialogEdit(unit)">
+                    <button>
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex justify-end mt-4">
+            <mat-paginator
+                [length]="units.length"
+                [pageSize]="10"
+                [pageSizeOptions]="[5, 10, 20]"
+                aria-label="Select pagination">
+            </mat-paginator>
+        </div>
+    </div>
+</div>

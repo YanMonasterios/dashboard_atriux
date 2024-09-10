@@ -1,0 +1,67 @@
+<!-- <h1>Hero Layout</h1> -->
+
+<mat-sidenav-container fullscreen >
+
+    <mat-sidenav #sidenav mode="push" [ngStyle]="{width: '250px'}">
+        <mat-toolbar class="toolbar" color="primary">
+            <!-- <span>Menu</span> -->
+            <img src="/assets/images/logo.png" style="width: 50px;" alt="Logo">
+            <span class="spacer"></span>
+            <button mat-icon-button (click)="sidenav.toggle()">
+                <mat-icon>menu</mat-icon>
+            </button>
+
+        </mat-toolbar>
+
+        <mat-nav-list >
+            
+            <mat-list-item *ngFor="let item of sidebarItems" [routerLink]="item.url" (click)="sidenav.toggle()">
+
+                <mat-icon matListItemIcon>{{item.icon}}</mat-icon>
+                <span class="sidebar-item-label">{{item.label}}</span>
+
+
+            </mat-list-item>
+        </mat-nav-list>
+
+    </mat-sidenav>
+
+    <mat-toolbar >
+
+        <button mat-icon-button (click)="sidenav.toggle()">
+            <mat-icon>menu</mat-icon>
+        </button>
+
+        <!-- <span>User</span> -->
+        <!-- <img class="circular-image" src="https://images.unsplash.com/photo-1542909168-82c3e7fdca5c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=128&q=80" alt=""> -->
+        <div class="user-info-container">
+            <div class="user-icon-container">
+                <img src="/assets/images/user-avatar.png" alt="User Avatar" class="user-icon">
+            </div>
+            <h3 class="user-label">{{user()?.description}}</h3>
+        </div>
+         <!-- <pre>{{ user() | json}}</pre> -->
+
+
+        <span class="spacer"></span>
+        <button mat-button (click)="onLogout()"> 
+            <mat-icon>logout</mat-icon>
+            Logout 
+        </button>
+
+    </mat-toolbar>
+
+    <div class="container" class="bg-[#e1e1e1]">
+        <router-outlet></router-outlet>
+    </div>
+
+
+    <!-- <h5>Footer</h5> -->
+
+
+</mat-sidenav-container>
+
+
+
+
+
