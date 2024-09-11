@@ -5,8 +5,10 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build:href": "ng build --base-href ./",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
+    "copy:dist": "copyfiles dist/dashboard-atriux/browser/* ./docs -f",
     "serve:ssr:dashboard-atriux": "node dist/dashboard-atriux/server/server.mjs"
   },
   "private": true,
@@ -40,6 +42,7 @@
     "@types/jasmine": "~5.1.0",
     "@types/node": "^18.18.0",
     "autoprefixer": "^10.4.20",
+    "copyfiles": "^2.4.1",
     "jasmine-core": "~5.1.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
