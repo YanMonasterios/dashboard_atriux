@@ -1,0 +1,85 @@
+<div class="bg-[#e1e1e1] min-h-screen p-10">
+    <div class="flex justify-between items-center mb-4"> <!-- Contenedor para el título y la etiqueta -->
+        <h5 class="text-3xl font-bold p-2">Dashboard</h5>
+        <p class="text-1xl p-2">Atriux > Menu > Dashboard</p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-4">
+        <div class="bg-white rounded-lg shadow p-2 w-full mx-auto"> <!-- Reducir padding -->
+            <div class="flex items-center justify-between">
+                <div>
+                    <h4 class="font-semibold text-lg">Cotizaciones Activas</h4>
+                    <p class="text-2xl font-bold">{{ totalSales }}</p>
+                </div>
+                <img src="/assets/images/check_mark.png" alt="User Avatar" class="user-icon h-8 w-8"> <!-- Ajustar tamaño de imagen -->
+            </div>
+        </div>
+
+        <div class="bg-white rounded-lg shadow p-2 w-full mx-auto"> <!-- Reducir padding -->
+            <div class="flex items-center justify-between">
+                <div>
+                    <h4 class="font-semibold text-lg">Prospecciones de Ventas</h4>
+                    <p class="text-2xl font-bold">{{ totalUsers }}</p>
+                </div>
+                <img src="/assets/images/check_mark.png" alt="User Avatar" class="user-icon h-8 w-8"> <!-- Ajustar tamaño de imagen -->
+            </div>
+        </div>
+
+        <div class="bg-white rounded-lg shadow p-2 w-full mx-auto"> <!-- Reducir padding -->
+            <div class="flex items-center justify-between">
+                <div>
+                    <h4 class="font-semibold text-lg">Total de Rutas</h4>
+                    <p class="text-2xl font-bold">{{ totalProducts }}</p>
+                </div>
+                <img src="/assets/images/map_mark.png" alt="User Avatar" class="user-icon h-8 w-8"> <!-- Ajustar tamaño de imagen -->
+            </div>
+        </div>
+
+
+    </div>
+
+    <!-- Sección para gráficos -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+        <div class="bg-white rounded-lg shadow p-4 w-full md:w-2/1 mx-auto">
+          <h2 class="font-semibold text-lg">Distribución de Usuarios</h2>
+          <canvas class="user-distribution-chart" baseChart
+            [datasets]="userDistributionChartData"
+            [labels]="userDistributionChartLabels"
+            [options]="chartOptions"
+            [legend]="true"
+            chartType="doughnut"
+            style="height: 200px; width: 100%;">
+          </canvas>
+        </div>
+      
+        <div class="bg-white rounded-lg shadow p-4 w-full md:w-2/1 mx-auto">
+          <h2 class="font-semibold text-lg">Gráfico de Ventas</h2>
+          <canvas class="user-distribution-chart"
+            baseChart
+            [data]="pieChartData"
+            [type]="pieChartType"
+            [options]="pieChartOptions"
+            style="height: 200px; width: 100%;">
+          </canvas>
+        </div>
+      </div>
+
+    <!-- Sección para rutas asignadas -->
+    <div class="bg-white rounded-lg shadow p-4 flex items-center mb-4">
+        <div class="flex-1 p-4">
+            <h2 class="font-semibold text-xl">Rutas Asignadas</h2>
+            <p class="text-gray-600">Descripción de las rutas asignadas.</p>
+        </div>
+        <img src="/assets/images/google-placeholder.png" alt="Mapa" class="h-auto max-h-[128px] object-cover">
+    </div>
+</div>
+
+        <!-- <div class="bg-white rounded-lg shadow p-10">
+            <h2 class="font-semibold">Gráfico Circular</h2>
+            <canvas class="user-distribution-chart" baseChart
+                    [data]="circularChartData" 
+                    [options]="chartOptions"
+                    [legend]="true"
+                    chartType="pie"> 
+            </canvas>
+        </div> -->

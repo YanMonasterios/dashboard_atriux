@@ -34,20 +34,65 @@
 
         <!-- <span>User</span> -->
         <!-- <img class="circular-image" src="https://images.unsplash.com/photo-1542909168-82c3e7fdca5c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=128&q=80" alt=""> -->
-        <div class="user-info-container">
+        
+        <!-- <div class="user-info-container">
             <div class="user-icon-container">
                 <img src="/assets/images/user-avatar.png" alt="User Avatar" class="user-icon">
             </div>
             <h3 class="user-label">{{user()?.description}}</h3>
-        </div>
+        </div> -->
+        
          <!-- <pre>{{ user() | json}}</pre> -->
-
+         <img src="/assets/images/logo-preview.png" style="width: 100px;" alt="Logo">
 
         <span class="spacer"></span>
-        <button mat-button (click)="onLogout()"> 
+        <!--  -->
+        <div class="user-info-container">
+            <div class="user-icon-container">
+                <!-- <img src="/assets/images/user-avatar.png" alt="User Avatar" class="user-icon"> -->
+            </div>
+            <h3 class="user-label">
+                <span style="color: black;">{{ user()?.description }}</span>
+                <span style="color: #29abe2;"> Monasterios</span>
+            </h3>
+        </div>
+
+        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          
+          <mat-menu #menu="matMenu">
+            <!-- <button mat-menu-item>
+              <mat-icon>dialpad</mat-icon>
+              <span>Redial</span>
+            </button> -->
+            <!-- <button mat-menu-item disabled>
+              <mat-icon>voicemail</mat-icon>
+              <span>Check voice mail</span>
+            </button> -->
+            <button mat-menu-item (click)="onSettings()">
+                <mat-icon>notifications_active</mat-icon>
+                <span>Notificaciones</span>
+              </button>
+
+            <button mat-menu-item (click)="onSettings()">
+              <mat-icon>settings</mat-icon>
+              <span>Configuración</span>
+            </button>
+
+            <button mat-menu-item (click)="onLogout()" style="color:red"> 
+                <mat-icon style="color:red">logout</mat-icon>
+                Logout 
+            </button>
+          </mat-menu>
+          <!--  -->
+          
+        <!-- <button mat-button (click)="onLogout()"> 
             <mat-icon>logout</mat-icon>
             Logout 
-        </button>
+        </button> -->
+
+        
 
     </mat-toolbar>
 

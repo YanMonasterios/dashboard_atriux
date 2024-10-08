@@ -1,0 +1,26 @@
+.dashboard-container {
+    max-width: 1200px;
+    margin: auto;
+  }
+  
+  /* h1 {
+    text-align: center;
+  }
+  
+  .bg-white {
+    background-color: #ffffff;
+  }
+  
+  .shadow {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .rounded-lg {
+    border-radius: 0.5rem;
+  } */
+
+  .user-distribution-chart {
+    width: 100% !important; /* Asegúrate de que ocupe todo el ancho del contenedor */
+    height: 500px !important; /* Ajusta la altura según tus necesidades */
+}
+
